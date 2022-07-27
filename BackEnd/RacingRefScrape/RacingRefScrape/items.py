@@ -7,6 +7,6 @@ import scrapy
 
 
 class RacingrefscrapeItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
+    name = scrapy.Field(default='NA')
+    link = scrapy.Field(default='NA')
     pass

@@ -1,4 +1,6 @@
 import scrapy
+from RacingRefScrape.items import RacingrefscrapeItem
+from scrapy.loader import ItemLoader
 
 class RaceOptions(scrapy.Spider):
     name = 'RaceOptions'
@@ -6,7 +8,13 @@ class RaceOptions(scrapy.Spider):
 
     def parse(selfself, response):
         for race in response.css('div.table-row'):
-            yield {
-                'name': race.css('div.track.W>a').attrib['title'],
-                'link': race.css('div.track.W>a').attrib['href']
-            }
+            l = ItemLoader(item=RacingrefscrapeItem(), selector=race)
+            try:
+                l.add_css('name','div.track.W>a::attr(title)')
+                l.add_css('link','div.track.W>a::attr(href)')
+                yield l.load_item()
+            except:
+                l.add_value('name', 'NONE')
+                l.add_value('link', 'NONE')
+                pass
+
