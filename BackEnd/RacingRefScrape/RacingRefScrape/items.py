@@ -7,6 +7,10 @@ import scrapy
 
 
 class RacingrefscrapeItem(scrapy.Item):
-    name = scrapy.Field(default='NA')
-    link = scrapy.Field(default='NA')
-    pass
+    number = scrapy.Field()
+    name = scrapy.Field()
+    link = scrapy.Field()
+
+    driver = scrapy.Field()
+    position = scrapy.Field()
+    car_number = scrapy.Field()
