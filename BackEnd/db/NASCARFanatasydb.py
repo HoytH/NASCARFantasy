@@ -11,6 +11,7 @@ class NASCARSQL:
         self.cur.execute("""CREATE TABLE IF NOT EXISTS races (number REAL PRIMARY KEY, name TEXT, link TEXT)""")
 
     def create_race_results_table(self, name):
-        print("""CREATE TABLE IF NOT EXISTS ? (driver REAL PRIMARY KEY, position REAL, car_number REAL)""",(name,))
-        print("CREATE TABLE IF NOT EXISTS {} (car_number REAL PRIMARY KEY, driver TEXT, position REAL)".format(name))
         self.cur.execute("CREATE TABLE IF NOT EXISTS {} (car_number REAL PRIMARY KEY, driver TEXT, position REAL)".format(name))
+
+    def create_user_table(self, name):
+        self.cur.execute("CREATE TABLE IF NOT EXISTS user_teams (user TEXT PRIMARY KEY, drivers TEXT)".format(name))
