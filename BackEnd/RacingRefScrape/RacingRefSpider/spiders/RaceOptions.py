@@ -1,10 +1,10 @@
 import scrapy
-from RacingRefScrape.items import RacingrefscrapeItem
+from BackEnd.RacingRefScrape.RacingRefSpider.items import RacingrefscrapeItem
 from scrapy.loader import ItemLoader
 
 class RaceOptions(scrapy.Spider):
     name = 'RaceOptions'
-    start_urls = ['https://www.racing-reference.info/season-stats/2022/W/']
+    start_urls = ['https://www.racing-reference.info/season-stats/2023/W/']
 
     def parse(self, response):
         for race in response.css('div.table-row'):
@@ -27,7 +27,7 @@ class RaceResults(scrapy.Spider):
         self.start_urls = [link]
         self.track_name = name
 
-    def parse(selfself, response):
+    def parse(self, response):
         for row in response.css('table.tb.race-results-tbl>tr'):
             l = ItemLoader(item=RacingrefscrapeItem(), selector=row)
             print(row)
