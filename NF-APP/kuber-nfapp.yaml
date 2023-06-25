@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nfapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nfapp
+  template:
+    metadata:
+      labels:
+        app: nfapp
+    spec:
+      containers:
+      - name: nfapp
+        image: us-central1-docker.pkg.dev/nfapp-389020/nfapp-repo/nfapp:latest
+        ports:
+          - containerPort: 4200
