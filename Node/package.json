@@ -2,7 +2,7 @@
     "name": "angular-journey-server",
     "version": "0.0.0",
     "scripts": {
-        "start": "node index.js",
+        "start": "node server.js",
         "start:dev": "nodemon ./server.js localhost 8080",
         "test": "echo \"Error: No Test Specified\" && exit 1"
     },
